@@ -1,3 +1,146 @@
-.scoreboard {
+@use "../../../style/mixins/scrollbar";
 
+.scoreboard {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	margin-top: 35px;
+
+	@include scrollbar.scrollbarStyle(
+			$width: 5px,
+			$borderRadius: var(--border-radius),
+			$bgColor: var(--scoreboard-line-color),
+			$handleColor: var(--scoreboard-hover-line-color),
+			$handleHoverColor: var(--scoreboard-active-line-color)
+	);
+}
+
+.scoreTable {
+	display: block;
+	empty-cells: show;
+	width: 45vw;
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	thead, tfoot {
+		display: block;
+		position: relative;
+		width: 100%;
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+
+	tbody {
+		display: block;
+		position: relative;
+		width: 100%;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 50vh;
+	}
+
+	tr {
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	// column & row table sizes
+
+	th, td {
+		display: block;
+		flex-basis: 100%;
+		flex-grow: 2;
+		padding: 10px;
+		text-align: left;
+
+		&:first-child {
+			max-width: 5%;
+		}
+
+		&:last-child {
+			max-width: 18%;
+		}
+	}
+
+	tfoot {
+		th:first-child {
+			max-width: 100%;
+		}
+
+		th:last-child {
+			text-align: left;
+			max-width: 18%;
+		}
+	}
+
+	// font styles
+
+	th {
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		color: var(--primary-font-color);
+		text-transform: uppercase;
+
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+
+	td {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 15px;
+		color: var(--primary-font-color);
+	}
+
+	td:first-child {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	td:last-child {
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 15px;
+		color: var(--secondary-font-color);
+	}
+
+	// radius
+
+	thead th:first-child {
+		border-top-left-radius: var(--border-radius);
+	}
+
+	thead th:last-child {
+		border-top-right-radius: var(--border-radius);
+	}
+
+	tfoot th:first-child {
+		border-bottom-left-radius: var(--border-radius);
+	}
+
+	tfoot th:last-child {
+		border-bottom-right-radius: var(--border-radius);
+	}
+
+	// colors
+
+	thead th, tfoot th {
+		background-color: var(--fg-color);
+	}
+
+	tbody tr:nth-child(n) {
+		background-color: var(--scoreboard-line-color);
+	}
+
+	tbody tr:hover {
+		background-color: var(--scoreboard-hover-line-color);
+	}
 }
