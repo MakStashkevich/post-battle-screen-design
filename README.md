@@ -1,33 +1,29 @@
 # Post-battle Screen Design
 
-## Introduction
+### Introduction
 
 You need to design and implement a functional post-battle screen for a session based game.
 
-## Main Task
+### Main Task
 There are two teams, the winning team and loser team. Each team consists of 50 players.
 The teams should be organized side by side. 
 Each player has a nickname and scores and can be in two states, dead or alive. 
 Also, there should be a tooltip with additional player info (total kills and deaths) and a button to send a friend request.
 
-## Additional Task (Optional)
+### Additional Task (Optional)
 Implement a dummy backend for the task using any of REST/graphQL/GRPC.
-
----
 
 ## My solution
 
 It was decided to use the scoreboard (table) for a more comfortable user experience (UX) with the ability to scroll through the list of players of each team.
 
-## Figma Design Concept
+### Figma Design Concept
 
 [See Figma Project](https://www.figma.com/file/NtSeuqvFEkkqwD5OYyEStB/Post-battle-screen?node-id=0%3A1&t=05zFtkKufIoTPmdm-1)
 
-## Demo
+### Demo
 
 Not ready yet.
-
----
 
 ## How to install project
 
@@ -50,8 +46,6 @@ Run this command on root folder for build frontend:
 Run this command on root folder: 
 
 `cd api && pip3 install -r requirements.txt && python3 -m src.main`
-
----
 
 ## Build Docker for production
 
