@@ -1,0 +1,23 @@
+@import "fonts/inter-font";
+
+:root {
+	--bg-color: #3F5587;
+	--fg-color: rgba(255, 255, 255, 0.12);
+	--button-color: rgba(255, 255, 255, 0.5);
+	--button-hover-color: rgba(255, 255, 255, 0.12);
+	--scroreboard-line-color: rgba(255, 255, 255, 0.5);
+	--scroreboard-active-line-color: rgba(255, 255, 255, 0.12);
+	--scroreboard-hover-line-color: rgba(255, 255, 255, 0.8);
+	--primary-font-color: #FFF;
+	--secondary-font-color: #C9CFEE;
+	--action-color: #CAECFF;
+	--border-radius: 10px;
+}
+
+body {
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--primary-font-color);
+	background: var(--bg-color);
+}
