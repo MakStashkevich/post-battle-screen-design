@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/App.module.scss';
+import style from './AppScreen.module.scss';
 import PostBattleScreen from "./post-battle/PostBattleScreen";
 
 const AppScreen = () => {

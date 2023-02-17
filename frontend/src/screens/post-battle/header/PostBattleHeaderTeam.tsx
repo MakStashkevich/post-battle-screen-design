@@ -1,16 +1,16 @@
-import style from "../../style/screens/PostBattleScreen.module.scss";
-import TrophySvg from "./icons/TrophySvg";
-import DislikeSvg from "./icons/DislikeSvg";
-import {convertNumber} from "../../utils/math";
+import style from "./PostBattleHeader.module.scss";
+import TrophySvg from "../icons/TrophySvg";
+import DislikeSvg from "../icons/DislikeSvg";
+import {convertNumber} from "../../../utils/math";
 import React from "react";
 
-interface PostBattleTeamProps {
+interface PostBattleHeaderTeamProps {
     won: boolean;
     teamName: string;
     teamScore: number;
 }
 
-const PostBattleTeamStats = ({won, teamName, teamScore}: PostBattleTeamProps) => {
+const PostBattleHeaderTeam = ({won, teamName, teamScore}: PostBattleHeaderTeamProps) => {
     return (
         <div className={style.team}>
             <div className={style.teamIcon}>
@@ -31,4 +31,4 @@ const PostBattleTeamStats = ({won, teamName, teamScore}: PostBattleTeamProps) =>
     )
 }
 
-export default PostBattleTeamStats;
+export default PostBattleHeaderTeam;
