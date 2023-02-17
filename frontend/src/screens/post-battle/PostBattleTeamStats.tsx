@@ -1,6 +1,6 @@
 import style from "../../style/screens/PostBattleScreen.module.scss";
-import TrophySvg from "../../icons/TrophySvg";
-import DislikeSvg from "../../icons/DislikeSvg";
+import TrophySvg from "./icons/TrophySvg";
+import DislikeSvg from "./icons/DislikeSvg";
 import {convertNumber} from "../../utils/math";
 import React from "react";
 
