@@ -33,29 +33,27 @@ const ScoreboardTeamTable = () => {
     let totalScore = 0;
     teamUsers.map(v => totalScore += v.score)
     return (
-        <div>
-            <table className={style.scoreTable}>
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Player</th>
-                    <th>Status</th>
-                    <th>Score</th>
-                </tr>
-                </thead>
-                <tbody>
-                {teamUsers.map((v) =>
-                    <ScoreboardLine id={v.id} username={v.username} alive={v.alive} score={v.score}/>
-                )}
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>Total</th>
-                    <th>{convertNumber(totalScore)}</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
+        <table className={style.scoreTable}>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Player</th>
+                <th>Status</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {teamUsers.map((v) =>
+                <ScoreboardLine id={v.id} username={v.username} alive={v.alive} score={v.score}/>
+            )}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Total</th>
+                <th>{convertNumber(totalScore)}</th>
+            </tr>
+            </tfoot>
+        </table>
     )
 }
 

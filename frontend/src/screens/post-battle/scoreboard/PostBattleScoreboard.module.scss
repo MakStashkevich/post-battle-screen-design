@@ -1,5 +1,8 @@
 @use "../../../style/mixins/scrollbar";
 
+$tablePadding: 10px;
+$tableScrollWidth: 5px;
+
 .scoreboard {
 	display: flex;
 	flex-direction: row;
@@ -8,7 +11,7 @@
 	margin-top: 35px;
 
 	@include scrollbar.scrollbarStyle(
-			$width: 5px,
+			$width: $tableScrollWidth,
 			$borderRadius: var(--border-radius),
 			$bgColor: var(--scoreboard-line-color),
 			$handleColor: var(--scoreboard-hover-line-color),
@@ -52,11 +55,12 @@
 		display: block;
 		flex-basis: 100%;
 		flex-grow: 2;
-		padding: 10px;
+		padding: $tablePadding;
 		text-align: left;
 
 		&:first-child {
 			max-width: 5%;
+			padding-left: 20px;
 		}
 
 		&:last-child {
@@ -85,8 +89,8 @@
 		color: var(--primary-font-color);
 		text-transform: uppercase;
 
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-top: $tablePadding + 2px;
+		padding-bottom: $tablePadding + 2px;
 	}
 
 	td {
@@ -120,6 +124,7 @@
 
 	thead th:last-child {
 		border-top-right-radius: var(--border-radius);
+		padding-right: $tablePadding + $tableScrollWidth;
 	}
 
 	tfoot th:first-child {
@@ -128,6 +133,7 @@
 
 	tfoot th:last-child {
 		border-bottom-right-radius: var(--border-radius);
+		padding-right: $tablePadding + $tableScrollWidth;
 	}
 
 	// colors
