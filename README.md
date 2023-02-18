@@ -15,6 +15,8 @@ Implement a dummy backend for the task using any of REST/graphQL/GRPC.
 
 ## My solution
 
+![Solution photo](./images/img.png)
+
 It was decided to use the scoreboard (table) for a more comfortable user experience (UX) with the ability to scroll through the list of players of each team.
 
 ### Figma Design Concept
@@ -45,10 +47,18 @@ Run this command on root folder for build frontend:
 
 Run this command on root folder: 
 
-`cd api && pip3 install -r requirements.txt && sudo chmod +x start-local.sh && ./start-local.sh`
+`cd api && pip3 install -r requirements.txt && sudo chmod +x start-local.sh && sudo ./start-local.sh`
 
 ## Build Docker for production
 
+Before use Docker on dedicate server you need run this command:
+
+`sudo chmod +x install_docker_engine.sh && sudo ./install_docker_engine.sh`
+
 Run command on root folder to auto-install & auto-build Docker compose: 
 
-`sudo chmod +x build.sh && ./build.sh`
+`sudo chmod +x build.sh && sudo ./build.sh`
+
+For delete all run containers force, run script with `-f` argument:
+
+`sudo ./build.sh -f`
