@@ -37,7 +37,7 @@ Not ready yet.
 
 Run this command on root folder for build frontend: 
 
-`cd frontend && yarn build`
+`cd frontend && yarn start`
 
 ### Developing backend API
 
@@ -45,7 +45,7 @@ Run this command on root folder for build frontend:
 
 Run this command on root folder: 
 
-`cd api && pip3 install -r requirements.txt && python3 -m src.main`
+`cd api && pip3 install -r requirements.txt && sudo chmod +x start-local.sh && ./start-local.sh`
 
 ## Build Docker for production
 

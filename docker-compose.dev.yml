@@ -8,14 +8,14 @@ services:
     networks:
       - private
       - public
-#  frontend:
-#    extends:
-#      file: ./frontend/docker-services.dev.yml
-#      service: frontend
-#    networks:
-#      - public
-#    depends_on:
-#      - api
+  frontend:
+    extends:
+      file: ./frontend/docker-services.dev.yml
+      service: frontend
+    networks:
+      - public
+    depends_on:
+      - api
 networks:
   public:
   private:

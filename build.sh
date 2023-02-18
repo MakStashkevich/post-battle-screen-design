@@ -14,14 +14,12 @@ compose_file="docker-compose.yml"
 
 # Flags
 finish_flag="false"
-clear_flag="false"
 detach_flag="false"
 
 # shellcheck disable=SC2034
-while getopts ':htdfc' flag; do
+while getopts ':htdf' flag; do
   case "${flag}" in
     f) finish_flag="true" ;;
-    c) clear_flag="true" ;;
     t) compose_type="dev"
        compose_file="docker-compose.dev.yml" ;;
     d) detach_flag="true" ;;
@@ -45,13 +43,6 @@ else
   docker rmi ${prefix}-dev-api ${prefix}-dev-frontend
 fi
 echo
-
-if [ ${clear_flag} = "true" ]
-then
-  echo "### Force clear MySQL port ..."
-  # shellcheck disable=SC2046
-  sudo kill $(sudo lsof -t -i:3306)
-fi
 
 if [ ${finish_flag} = "true" ]
 then
