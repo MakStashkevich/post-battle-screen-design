@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  api:
+    extends:
+      file: ./api/docker-services.yml
+      service: api
+    networks:
+      - private
+      - public
+      - nginx_bridge
+  frontend:
+    extends:
+      file: ./frontend/docker-services.yml
+      service: frontend
+    networks:
+      - public
+      - nginx_bridge
+    depends_on:
+      - api
+networks:
+  public:
+  private:
+  nginx_bridge:
+    external: true
+    name: nginx_bridge
