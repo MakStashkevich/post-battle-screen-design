@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  api:
+  post-battle-api:
     build: .
     restart: unless-stopped
-    command: "--proxy-headers"
+    command: "--proxy-headers --root-path=/post-battle-screen/api/"
     ports:
       - "3600:3600"

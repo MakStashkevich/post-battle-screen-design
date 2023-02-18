@@ -25,7 +25,7 @@ It was decided to use the scoreboard (table) for a more comfortable user experie
 
 ### Demo
 
-Not ready yet.
+[See Demo Site](https://makstashkevich.com/post-battle-screen/demo/)
 
 ## How to install project
 

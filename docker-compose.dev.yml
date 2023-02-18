@@ -1,21 +1,21 @@
 version: "3.9"
 
 services:
-  api:
+  post-battle-api:
     extends:
       file: ./api/docker-services.dev.yml
-      service: api
+      service: post-battle-api
     networks:
       - private
       - public
-  frontend:
+  post-battle-frontend:
     extends:
       file: ./frontend/docker-services.dev.yml
-      service: frontend
+      service: post-battle-frontend
     networks:
       - public
     depends_on:
-      - api
+      - post-battle-api
 networks:
   public:
   private:

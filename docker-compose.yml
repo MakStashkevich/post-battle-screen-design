@@ -1,23 +1,23 @@
 version: "3.9"
 
 services:
-  api:
+  post-battle-api:
     extends:
       file: ./api/docker-services.yml
-      service: api
+      service: post-battle-api
     networks:
       - private
       - public
       - nginx_bridge
-  frontend:
+  post-battle-frontend:
     extends:
       file: ./frontend/docker-services.yml
-      service: frontend
+      service: post-battle-frontend
     networks:
       - public
       - nginx_bridge
     depends_on:
-      - api
+      - post-battle-api
 networks:
   public:
   private:

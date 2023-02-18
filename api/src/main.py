@@ -7,11 +7,11 @@ from starlette import status
 from starlette.exceptions import HTTPException as StarletteHTTPException, HTTPException
 from starlette.responses import JSONResponse, Response
 
+from .battle.routes import router as battle_router
 from .error.exceptions import ResponseException
 from .error.schemas import ErrorBadRequestResponseSchema, ErrorNotFoundResponseSchema, ErrorMethodResponseSchema, \
     ErrorValidationResponseSchema, ErrorServerResponseSchema, ErrorResponseSchema, ErrorNotAuthenticatedResponseSchema
 from .error.validators import valid_response_error
-from .battle.routes import router as battle_router
 
 _description = """
 This API enables HTTP access to Post-battle. 🚀
@@ -128,6 +128,7 @@ app.include_router(battle_router, prefix=v1_prefix, tags=['battle'], responses=e
 # CORS urls
 origins = [
     "http://localhost:3000",
+    "http://localhost:3601",
     "https://makstashkevich.com",
 ]
 

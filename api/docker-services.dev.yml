@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  api:
+  post-battle-api:
     build: .
     restart: unless-stopped
     entrypoint: "uvicorn src.main:app --reload --workers 1 --host 0.0.0.0 --port 3600"

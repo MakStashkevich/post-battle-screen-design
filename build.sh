@@ -37,10 +37,10 @@ echo
 echo "### Remove old containers images ..."
 if [ ${compose_type} = "production" ]
 then
-  docker rmi ${prefix}-production-api \
-             ${prefix}-production-frontend
+  docker rmi ${prefix}-production_post-battle-api \
+             ${prefix}-production_post-battle-frontend
 else
-  docker rmi ${prefix}-dev-api ${prefix}-dev-frontend
+  docker rmi ${prefix}-dev_post-battle-api ${prefix}-dev_post-battle-frontend
 fi
 echo
 
