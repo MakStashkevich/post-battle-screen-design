@@ -21,7 +21,7 @@ class BattleRequest:
         # combine data
         data = {
             'id': team_id,
-            'name': FakeBaseRequest.get_team_name(team_id),
+            'name': FakeBaseRequest.get_team_name(),
             'total_score': total_score,
             'players': players_list,
         }

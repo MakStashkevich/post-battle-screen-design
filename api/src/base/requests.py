@@ -46,7 +46,7 @@ def clear_avatars_table_cache():
 
 class FakeBaseRequest:
     @staticmethod
-    def get_team_name(team_id: int) -> str:
+    def get_team_name() -> str:
         names = [
             'Raging Lightning',
             'Retro Geckos',
@@ -75,20 +75,20 @@ class FakeBaseRequest:
         return username if username is not None else undefined_username
 
     @staticmethod
-    def get_player_score(player_id: int) -> int:
-        return random.randint(player_id % 50 + 9, 99999)
+    def get_player_score() -> int:
+        return random.randint(9, 99999)
 
     @staticmethod
-    def get_player_kills(player_id: int) -> int:
-        return random.randint(player_id % 50 + 9, 999)
+    def get_player_kills() -> int:
+        return random.randint(9, 999)
 
     @staticmethod
-    def get_player_deaths(player_id: int) -> int:
-        return random.randint(player_id % 50 + 9, 999)
+    def get_player_deaths() -> int:
+        return random.randint(9, 999)
 
     @staticmethod
-    def is_player_alive(player_id: int) -> bool:
-        return random.choice([True, False]) if player_id % 2 == 0 else random.choice([True, False])
+    def is_player_alive() -> bool:
+        return random.choice([True, False])
 
     @staticmethod
     def get_player_avatar_url(player_id: int) -> str | None:

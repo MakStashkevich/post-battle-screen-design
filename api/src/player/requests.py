@@ -9,9 +9,9 @@ class PlayerRequest:
             'id': player_id,
             'username': FakeBaseRequest.get_player_username(player_id),
             'avatar_url': FakeBaseRequest.get_player_avatar_url(player_id),
-            'score': FakeBaseRequest.get_player_score(player_id),
-            'alive': FakeBaseRequest.is_player_alive(player_id),
-            'kills': FakeBaseRequest.get_player_kills(player_id),
-            'deaths': FakeBaseRequest.get_player_deaths(player_id)
+            'score': FakeBaseRequest.get_player_score(),
+            'alive': FakeBaseRequest.is_player_alive(),
+            'kills': FakeBaseRequest.get_player_kills(),
+            'deaths': FakeBaseRequest.get_player_deaths()
         }
         return BattlePlayerSchema(**data)
