@@ -11,19 +11,33 @@ import SkullHeadSvg from "../icons/SkullHeadSvg";
 import useAnime from "../../../hooks/useAnime";
 import anime from "animejs";
 
-const ScoreboardLine = ({player, currentPlayer}: { player: BattlePlayerSchema, currentPlayer: boolean }) => {
+interface ScoreboardLineProps {
+    player: BattlePlayerSchema;
+    currentPlayer: boolean;
+    hideBorder: boolean;
+}
+
+const ScoreboardLine = ({player, currentPlayer, hideBorder}: ScoreboardLineProps) => {
     const {setTooltipPlayer} = usePostBattleTooltip();
     return (
-        <tr onMouseEnter={() => setTooltipPlayer(player, currentPlayer)} data-current={currentPlayer}>
+        <tr
+            onMouseEnter={() => setTooltipPlayer(player, currentPlayer)}
+            data-hide-border={hideBorder}
+            data-current={currentPlayer}
+        >
             <td>{player.rank}</td>
-            <td><PlayerAvatar src={player.avatar_url}/>{player.username + (currentPlayer ? ' (Me)': '')}</td>
+            <td><PlayerAvatar src={player.avatar_url}/>{player.username + (currentPlayer ? ' (Me)' : '')}</td>
             <td>{player.alive ? <HeartSvg/> : <SkullHeadSvg/>}{player.alive ? 'Alive' : 'Dead'}</td>
             <td>{convertNumber(player.score) + ' pts'}</td>
         </tr>
     )
 }
 
-const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
+interface ScoreboardTeamProps {
+    team: BattleTeamSchema;
+}
+
+const ScoreboardTeamTable = ({team}: ScoreboardTeamProps) => {
     const bodyRef = useRef<HTMLTableSectionElement>(null);
     const tableId = `post-battle-scoreboard-${team.id}`
     const [currentPlayerRank] = useState<number>(team.id === 1 ? getRandomInt(5, 50) : 0);
@@ -42,7 +56,7 @@ const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
             };
             anime({
                 targets: animateScrollData,
-                top: 55 * (currentPlayerRank - 1),
+                top: (55 + 1) * (currentPlayerRank - 1), // 55px row height + 1px bottom line
                 easing: "easeInOutQuart",
                 duration: 1500,
                 delay: 1000,
@@ -63,7 +77,12 @@ const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
                 </thead>
                 <tbody ref={bodyRef}>
                 {team.players.map(player =>
-                    <ScoreboardLine key={player.id} player={player} currentPlayer={currentPlayerRank === player.rank}/>
+                    <ScoreboardLine
+                        key={player.id}
+                        player={player}
+                        currentPlayer={currentPlayerRank === player.rank}
+                        hideBorder={currentPlayerRank - 1 === player.rank || currentPlayerRank === player.rank}
+                    />
                 )}
                 </tbody>
                 <tfoot>

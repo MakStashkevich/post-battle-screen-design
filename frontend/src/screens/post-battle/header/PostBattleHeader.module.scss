@@ -37,14 +37,14 @@
 	align-items: center;
 	background: var(--fg-color);
 	border-radius: var(--border-radius);
-	padding: 20px;
+	padding: 20px 30px;
+	max-width: 200px;
 }
 
 .teamIcon {
 	svg {
 		fill: var(--action-color);
-		margin-right: 8px;
-		width: 80px;
+		margin-right: 15px;
 	}
 }
 

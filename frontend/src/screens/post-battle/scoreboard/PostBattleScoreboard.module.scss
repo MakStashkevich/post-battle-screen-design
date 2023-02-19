@@ -155,9 +155,22 @@ $tableScrollWidth: 5px;
 
 	tbody tr:nth-child(n) {
 		background-color: var(--scoreboard-line-color);
+		//border-bottom: 1px solid var(--scoreboard-active-line-color);
+		border-bottom: 1px solid var(--scoreboard-active-line-color);
+		border-image-source: linear-gradient(
+						to right,
+						rgba(255, 255, 255, 0) 3%,
+						var(--scoreboard-active-line-color) 3% 97%,
+						rgba(255, 255, 255, 0) 97%
+		);
+		border-image-slice: 1;
 
 		&[data-current="true"] {
 			background-color: var(--scoreboard-active-line-color);
+		}
+
+		&[data-hide-border="true"] {
+			border: none;
 		}
 	}
 
