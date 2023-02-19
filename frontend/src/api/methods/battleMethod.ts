@@ -4,6 +4,7 @@ import {getRandomInt} from "../../lib/math-helper";
 
 export interface BattlePlayerSchema {
     id: number;
+    rank: number;
     username: string;
     avatar_url?: string;
     score: number;
@@ -26,8 +27,9 @@ function getFakeTeamPlayers(offsetId: number = 0): BattlePlayerSchema[] {
         const playerId = i + 1 + offsetId;
         teamPlayers.push({
             id: playerId,
+            rank: i + 1,
             username: 'Nickname_' + playerId,
-            score: getRandomInt(0, 12345678),
+            score: 9999 - (i * 99),
             alive: Boolean(Math.random() < 0.5),
             kills: getRandomInt(0, 12345),
             deaths: getRandomInt(0, 12345),

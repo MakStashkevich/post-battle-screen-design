@@ -13,7 +13,7 @@ const ScoreboardLine = ({player}: { player: BattlePlayerSchema }) => {
     const {setTooltipPlayer} = usePostBattleTooltip();
     return (
         <tr onMouseEnter={() => setTooltipPlayer(player)}>
-            <td>{player.id}</td>
+            <td>{player.rank}</td>
             <td><PlayerAvatar src={player.avatar_url}/>{player.username}</td>
             <td>{player.alive ? <HeartSvg/> : <SkullHeadSvg/>}{player.alive ? 'Alive' : 'Dead'}</td>
             <td>{convertNumber(player.score) + ' pts'}</td>
