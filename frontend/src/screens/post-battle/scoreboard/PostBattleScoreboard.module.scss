@@ -155,7 +155,6 @@ $tableScrollWidth: 5px;
 
 	tbody tr:nth-child(n) {
 		background-color: var(--scoreboard-line-color);
-		//border-bottom: 1px solid var(--scoreboard-active-line-color);
 		border-bottom: 1px solid var(--scoreboard-active-line-color);
 		border-image-source: linear-gradient(
 						to right,
@@ -172,6 +171,10 @@ $tableScrollWidth: 5px;
 		&[data-hide-border="true"] {
 			border: none;
 		}
+	}
+
+	tbody tr:last-child {
+		border: none;
 	}
 
 	tbody tr:hover {
