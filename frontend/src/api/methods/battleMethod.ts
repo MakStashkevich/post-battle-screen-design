@@ -62,5 +62,5 @@ export async function getPostBattleData(): Promise<BattleTeamSchema[]> {
         }
         return teams;
     }
-    return await apiGet<BattleTeamSchema[]>(`/v1/battle/post/endgame`)
+    return await apiGet<BattleTeamSchema[]>(`/v1/battle/endgame`)
 }
