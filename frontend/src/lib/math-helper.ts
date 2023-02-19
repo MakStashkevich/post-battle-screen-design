@@ -11,3 +11,7 @@ export function getRandomInt(min: number, max: number): number {
     max = Math.floor(max);
     return Math.floor(getRandomArbitrary(min, max));
 }
+
+export function isNumeric(value: any) {
+    return /^-?\d+$/.test(value.toString());
+}

@@ -1,8 +1,10 @@
 import React, {createContext, RefObject, useEffect, useRef, useState} from 'react';
 import style from "./PostBattleTooltip.module.scss";
+import {BattlePlayerSchema} from "../../../api/methods/battleMethod";
+import {convertNumber} from "../../../lib/math-helper";
 
 export interface TooltipContextSchema {
-    setTooltip: (value: string) => void;
+    setTooltipPlayer: (player: BattlePlayerSchema) => void;
 }
 
 let currentX = 0, currentY = 0;
@@ -22,7 +24,7 @@ interface TooltipProviderProps {
 
 const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps) => {
     const [show, setShow] = useState<boolean>(false);
-    const [text, setText] = useState<string>('');
+    const [playerInfo, setPlayerInfo] = useState<BattlePlayerSchema>();
     const tooltipRef = useRef<HTMLDivElement>(null);
     const tooltipContentRef = useRef<HTMLDivElement>(null);
     const clearTooltip = () => {
@@ -51,10 +53,10 @@ const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps)
             document.removeEventListener('mousemove', onMouseMoveTooltip);
         }
     }, [currentRef]);
-    const setTooltip = (text: string) => {
+    const setTooltipPlayer = (player: BattlePlayerSchema) => {
         clearTooltip();
         timeout = setTimeout(() => {
-            setText(text);
+            setPlayerInfo(player);
             setShow(true);
             if (tooltipRef && tooltipRef.current && tooltipRef.current.style) {
                 tooltipRef.current.style.top = (currentY - 130) + 'px';
@@ -67,16 +69,18 @@ const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps)
         stylesData.push(style.tooltipInfoShow);
     }
     return (
-        <TooltipContext.Provider value={{setTooltip}}>
+        <TooltipContext.Provider value={{setTooltipPlayer}}>
             <div className={style.tooltip}>
                 {children}
                 <div className={stylesData.join(' ')} ref={tooltipRef}>
-                    <div className={style.tooltipContent} ref={tooltipContentRef}>
-                        <span>{text}</span>
-                        <span><b>Kills:</b> 102</span>
-                        <span><b>Deaths:</b> 12</span>
-                        <button>Add to friend</button>
-                    </div>
+                    {playerInfo && (
+                        <div className={style.tooltipContent} ref={tooltipContentRef}>
+                            <span>{playerInfo.username}</span>
+                            <span><b>Kills:</b> {convertNumber(playerInfo.kills)}</span>
+                            <span><b>Deaths:</b> {convertNumber(playerInfo.deaths)}</span>
+                            <button>Add to friend</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </TooltipContext.Provider>

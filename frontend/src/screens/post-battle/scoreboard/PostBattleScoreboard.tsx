@@ -1,40 +1,24 @@
 import React, {useRef} from 'react';
 import style from "./PostBattleScoreboard.module.scss";
-import {convertNumber, getRandomInt} from "../../../utils/math";
+import {convertNumber} from "../../../lib/math-helper";
 import PostBattleTooltipProvider from "../tooltip/PostBattleTooltipProvider";
 import usePostBattleTooltip from "../tooltip/usePostBattleTooltip";
+import {PostBattleProps} from "../PostBattleScreen";
+import {BattlePlayerSchema, BattleTeamSchema} from "../../../api/methods/battleMethod";
 
-interface ScoreboardLineProps {
-    id: number;
-    username: string;
-    alive: boolean;
-    score: number;
-}
-
-const ScoreboardLine = ({id, username, alive, score}: ScoreboardLineProps) => {
-    const {setTooltip} = usePostBattleTooltip();
+const ScoreboardLine = ({player}: { player: BattlePlayerSchema }) => {
+    const {setTooltipPlayer} = usePostBattleTooltip();
     return (
-        <tr onMouseEnter={() => setTooltip(username)}>
-            <td>{id}</td>
-            <td>{username}</td>
-            <td>{alive ? 'Alive' : 'Dead'}</td>
-            <td>{convertNumber(score) + ' pts'}</td>
+        <tr onMouseEnter={() => setTooltipPlayer(player)}>
+            <td>{player.id}</td>
+            <td>{player.username}</td>
+            <td>{player.alive ? 'Alive' : 'Dead'}</td>
+            <td>{convertNumber(player.score) + ' pts'}</td>
         </tr>
     )
 }
 
-const ScoreboardTeamTable = () => {
-    const teamUsers: ScoreboardLineProps[] = [];
-    for (let i = 0; i < 50; i++) {
-        teamUsers.push({
-            id: i + 1,
-            username: 'Nickname_' + getRandomInt(1, 100),
-            alive: Boolean(Math.random() < 0.5),
-            score: getRandomInt(0, 12345678)
-        })
-    }
-    let totalScore = 0;
-    teamUsers.map(v => totalScore += v.score)
+const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
     const currentRef = useRef<HTMLTableElement>(null);
     return (
         <PostBattleTooltipProvider currentRef={currentRef}>
@@ -48,14 +32,14 @@ const ScoreboardTeamTable = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {teamUsers.map((v) =>
-                    <ScoreboardLine id={v.id} key={v.id} username={v.username} alive={v.alive} score={v.score}/>
+                {team.players.map(player =>
+                    <ScoreboardLine key={player.id} player={player}/>
                 )}
                 </tbody>
                 <tfoot>
                 <tr>
                     <th>Total</th>
-                    <th>{convertNumber(totalScore)}</th>
+                    <th>{convertNumber(team.total_score)}</th>
                 </tr>
                 </tfoot>
             </table>
@@ -63,13 +47,13 @@ const ScoreboardTeamTable = () => {
     )
 }
 
-const PostBattleScoreboard = () => {
-    return (
+const PostBattleScoreboard = ({teams}: PostBattleProps) => {
+    return teams && teams[0] && teams[1] ? (
         <div className={style.scoreboard}>
-            <ScoreboardTeamTable/>
-            <ScoreboardTeamTable/>
+            <ScoreboardTeamTable team={teams[0]}/>
+            <ScoreboardTeamTable team={teams[1]}/>
         </div>
-    );
+    ) : <React.Fragment/>;
 };
 
 export default PostBattleScoreboard;

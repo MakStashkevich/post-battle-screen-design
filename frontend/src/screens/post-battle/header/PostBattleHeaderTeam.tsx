@@ -1,7 +1,7 @@
 import style from "./PostBattleHeader.module.scss";
 import TrophySvg from "../icons/TrophySvg";
 import DislikeSvg from "../icons/DislikeSvg";
-import {convertNumber} from "../../../utils/math";
+import {convertNumber} from "../../../lib/math-helper";
 import React from "react";
 
 interface PostBattleHeaderTeamProps {
