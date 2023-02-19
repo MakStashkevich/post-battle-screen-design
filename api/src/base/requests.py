@@ -76,15 +76,15 @@ class FakeBaseRequest:
 
     @staticmethod
     def get_player_score(player_id: int) -> int:
-        return random.randint(9 * player_id, 999 * player_id)
+        return random.randint(player_id % 50 + 9, 99999)
 
     @staticmethod
     def get_player_kills(player_id: int) -> int:
-        return random.randint(player_id, 19 * player_id)
+        return random.randint(player_id % 50 + 9, 999)
 
     @staticmethod
     def get_player_deaths(player_id: int) -> int:
-        return random.randint(player_id, 19 * player_id)
+        return random.randint(player_id % 50 + 9, 999)
 
     @staticmethod
     def is_player_alive(player_id: int) -> bool:
