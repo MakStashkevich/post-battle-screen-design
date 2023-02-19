@@ -2,7 +2,8 @@
 @import "fonts/inter-font";
 
 :root {
-	--bg-color: #3F5587 linear-gradient(113.35deg, #263987 0%, #3F5787 45.44%, #3C4E87 100.71%);
+	--bg-color: #3F5587;
+	--bg-gradient: radial-gradient(30.82% 62.61% at 87.43% 100%, rgba(255, 107, 0, 0.376) 0%, rgba(255, 0, 0, 0) 100%), radial-gradient(26.07% 59.27% at 0% 100%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(113.35deg, #263987 0%, #3F5787 45.44%, #3C4E87 100.71%);
 	--fg-color: rgba(255, 255, 255, 0.12);
 	--button-color: rgba(255, 255, 255, 0.05);
 	--button-hover-color: rgba(255, 255, 255, 0.12);
@@ -25,7 +26,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: var(--primary-font-color);
-	background: var(--bg-color);
+	background: var(--bg-gradient);
+	background-color: var(--bg-color);
 
 	@include select-text.disable-select-text;
 }
