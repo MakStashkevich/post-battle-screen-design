@@ -15,7 +15,7 @@ Implement a dummy backend for the task using any of REST/graphQL/GRPC.
 
 ## My solution
 
-![Solution photo](./images/img.png)
+![Solution photo](./images/screenshoot.png)
 
 It was decided to use the scoreboard (table) for a more comfortable user experience (UX) with the ability to scroll through the list of players of each team.
 
@@ -24,6 +24,8 @@ It was decided to use the scoreboard (table) for a more comfortable user experie
 [See Figma Project](https://www.figma.com/file/NtSeuqvFEkkqwD5OYyEStB/Post-battle-screen?node-id=0%3A1&t=05zFtkKufIoTPmdm-1)
 
 ### Demo
+
+![Solution photo](./images/demo.gif)
 
 [See Demo Site](https://makstashkevich.com/post-battle-screen/demo/)
 
