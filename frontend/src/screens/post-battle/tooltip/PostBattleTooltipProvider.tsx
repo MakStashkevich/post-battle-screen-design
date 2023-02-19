@@ -47,6 +47,7 @@ const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps)
                     clearTooltip();
                 }
             });
+            currentRef.current?.addEventListener('scroll', () => clearTooltip());
         }
         document.addEventListener('mousemove', onMouseMoveTooltip);
         return () => {

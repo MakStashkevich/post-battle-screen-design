@@ -19,10 +19,10 @@ const ScoreboardLine = ({player}: { player: BattlePlayerSchema }) => {
 }
 
 const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
-    const currentRef = useRef<HTMLTableElement>(null);
+    const currentRef = useRef<HTMLTableSectionElement>(null);
     return (
         <PostBattleTooltipProvider currentRef={currentRef}>
-            <table className={style.scoreTable} ref={currentRef}>
+            <table className={style.scoreTable}>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -31,7 +31,7 @@ const ScoreboardTeamTable = ({team}: { team: BattleTeamSchema }) => {
                     <th>Score</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody ref={currentRef}>
                 {team.players.map(player =>
                     <ScoreboardLine key={player.id} player={player}/>
                 )}
