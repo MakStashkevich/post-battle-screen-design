@@ -8,6 +8,7 @@ class PlayerRequest:
         data = {
             'id': player_id,
             'username': FakeBaseRequest.get_player_username(player_id),
+            'avatar_url': FakeBaseRequest.get_player_avatar_url(player_id),
             'score': FakeBaseRequest.get_player_score(player_id),
             'alive': FakeBaseRequest.is_player_alive(player_id),
             'kills': FakeBaseRequest.get_player_kills(player_id),

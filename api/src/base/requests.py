@@ -1,6 +1,48 @@
 import os
 import random
 
+_cached_avatars_table: list[str] | None = None
+
+
+def get_avatars_table() -> list[str] | None:
+    global _cached_avatars_table
+    if _cached_avatars_table is not None:
+        return _cached_avatars_table
+
+    # Scrapper 100 random Steam avatars
+    from urllib import request
+    from bs4 import BeautifulSoup
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
+        }
+        webpage = request.urlopen(request.Request('https://randomavatar.com', headers=headers)).read()
+    except Exception:
+        return None
+    soup = BeautifulSoup(webpage, "lxml")
+    icons = soup.select('#icons div[class^="col-sm-2 col-xs-3"] a img[class^="img-responsive MainSpace RAFade"]')
+    if not icons:
+        return None
+
+    avatars_table = []
+    for icon in icons:
+        try:
+            avatars_table.append(icon['src'])
+        except Exception:
+            continue
+
+    if len(avatars_table) < 1:
+        _cached_avatars_table = None
+    else:
+        _cached_avatars_table = avatars_table
+
+    return _cached_avatars_table
+
+
+def clear_avatars_table_cache():
+    global _cached_avatars_table
+    _cached_avatars_table = None
+
 
 class FakeBaseRequest:
     @staticmethod
@@ -47,3 +89,13 @@ class FakeBaseRequest:
     @staticmethod
     def is_player_alive(player_id: int) -> bool:
         return random.choice([True, False]) if player_id % 2 == 0 else random.choice([True, False])
+
+    @staticmethod
+    def get_player_avatar_url(player_id: int) -> str | None:
+        avatars_base = get_avatars_table()
+        if avatars_base is None:
+            return None
+        try:
+            return avatars_base[player_id - 1]
+        except Exception:
+            return None

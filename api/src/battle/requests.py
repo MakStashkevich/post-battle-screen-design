@@ -1,5 +1,5 @@
 from .schemas import PostBattleTeamSchema
-from ..base.requests import FakeBaseRequest
+from ..base.requests import FakeBaseRequest, clear_avatars_table_cache
 from ..player.requests import PlayerRequest
 
 
@@ -22,6 +22,7 @@ class BattleRequest:
 
     @staticmethod
     def get_teams_post_battle() -> list[PostBattleTeamSchema]:
+        clear_avatars_table_cache()
         teams = [BattleRequest.get_team(1, 0), BattleRequest.get_team(2, 50)]
         if teams[0].total_score > teams[1].total_score:
             teams[0].won = True
