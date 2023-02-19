@@ -13,12 +13,12 @@ const PostBattleScreen = () => {
     useEffect(() => {
         getPostBattleData().then(v => setTeams(v));
     }, []);
-    return (
+    return teams && teams[0] && teams[1] ? (
         <div className={style.container}>
             <PostBattleHeader teams={teams}/>
             <PostBattleScoreboard teams={teams}/>
         </div>
-    );
+    ) : <React.Fragment/>;
 };
 
 export default PostBattleScreen;
