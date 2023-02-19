@@ -59,7 +59,7 @@ class FakeBaseRequest:
             'Knockout Ninjas',
             'Gecko Checkers'
         ]
-        return random.choice(names) + f" #{team_id}"
+        return random.choice(names)
 
     @staticmethod
     def get_player_username(player_id: int) -> str:
