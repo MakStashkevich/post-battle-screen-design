@@ -1,0 +1,14 @@
+@mixin avatar-props {
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}
+
+.avatarImage {
+	@include avatar-props;
+}
+
+.avatarGradient {
+	@include avatar-props;
+	background: #5196FF linear-gradient(180deg, #44BCFF -9.88%, #5196FF 90.12%);
+}

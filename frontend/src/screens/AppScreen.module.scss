@@ -28,7 +28,6 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	gap: 10px;
 	margin: 20px;
 }
 
@@ -36,14 +35,15 @@
 	color: var(--primary-font-color);
 	font-style: normal;
 	font-weight: 900;
-	font-size: calc(12vw + 2vh);
-	line-height: calc(12vw + 2vh);
+	font-size: calc(8vw + 2vh);
+	line-height: calc(8vw + 4vh);
+	margin-bottom: calc(2vw + 2vh);
 }
 
 .infoSubtitle {
 	color: var(--secondary-font-color);
 	font-style: normal;
 	font-weight: 700;
-	font-size: calc(3vw + 2vh);
-	line-height: calc(3vw + 2vh);
+	font-size: calc(1vw + 2vh);
+	line-height: calc(1vw + 4vh);
 }

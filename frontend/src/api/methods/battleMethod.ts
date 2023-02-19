@@ -5,6 +5,7 @@ import {getRandomInt} from "../../lib/math-helper";
 export interface BattlePlayerSchema {
     id: number;
     username: string;
+    avatar_url?: string;
     score: number;
     alive: boolean;
     kills: number;

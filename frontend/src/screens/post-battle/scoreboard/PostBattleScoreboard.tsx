@@ -5,14 +5,17 @@ import PostBattleTooltipProvider from "../tooltip/PostBattleTooltipProvider";
 import usePostBattleTooltip from "../tooltip/usePostBattleTooltip";
 import {PostBattleProps} from "../PostBattleScreen";
 import {BattlePlayerSchema, BattleTeamSchema} from "../../../api/methods/battleMethod";
+import PlayerAvatar from "../avatar/PlayerAvatar";
+import HeartSvg from "../icons/HeartSvg";
+import SkullHeadSvg from "../icons/SkullHeadSvg";
 
 const ScoreboardLine = ({player}: { player: BattlePlayerSchema }) => {
     const {setTooltipPlayer} = usePostBattleTooltip();
     return (
         <tr onMouseEnter={() => setTooltipPlayer(player)}>
             <td>{player.id}</td>
-            <td>{player.username}</td>
-            <td>{player.alive ? 'Alive' : 'Dead'}</td>
+            <td><PlayerAvatar src={player.avatar_url}/>{player.username}</td>
+            <td>{player.alive ? <HeartSvg/> : <SkullHeadSvg/>}{player.alive ? 'Alive' : 'Dead'}</td>
             <td>{convertNumber(player.score) + ' pts'}</td>
         </tr>
     )
