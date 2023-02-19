@@ -1,10 +1,11 @@
 import React from 'react';
 
-const DislikeSvg = () => {
+const DislikeSvg = ({id}: {id?: string}) => {
     return (
         <svg
-            width="70"
-            height="70"
+            id={id}
+            width="100"
+            height="100"
             viewBox="0 0 24 24"
             fill="#000000"
             xmlns="http://www.w3.org/2000/svg">

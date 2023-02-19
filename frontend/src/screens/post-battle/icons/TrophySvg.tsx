@@ -1,10 +1,11 @@
 import React from 'react';
 
-const TrophySvg = () => {
+const TrophySvg = ({id}: {id?: string}) => {
     return (
         <svg
-            width="60"
-            height="60"
+            id={id}
+            width="100"
+            height="100"
             viewBox="0 0 297 297"
             fill="#000000"
             xmlns="http://www.w3.org/2000/svg">

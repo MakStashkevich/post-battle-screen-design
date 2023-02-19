@@ -14,7 +14,7 @@ const PostBattleHeaderTeam = ({won, teamName, teamScore}: PostBattleHeaderTeamPr
     return (
         <div className={style.team}>
             <div className={style.teamIcon}>
-                {won ? <TrophySvg/> : <DislikeSvg/>}
+                {won ? <TrophySvg id={'winner'}/> : <DislikeSvg id={'looser'}/>}
             </div>
             <div className={style.teamCol}>
                 <span className={style.teamGameStatus}>

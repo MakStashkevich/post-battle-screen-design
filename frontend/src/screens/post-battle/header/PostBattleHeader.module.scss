@@ -38,13 +38,25 @@
 	background: var(--fg-color);
 	border-radius: var(--border-radius);
 	padding: 20px 30px;
-	max-width: 200px;
+	max-width: 210px;
 }
+
+$correctSize: 3px;
 
 .teamIcon {
 	svg {
 		fill: var(--action-color);
 		margin-right: 15px;
+
+		&[id="winner"] {
+			width: 60px - $correctSize;
+			height: 60px - $correctSize;
+		}
+
+		&[id="looser"] {
+			width: 70px - $correctSize;
+			height: 70px - $correctSize;
+		}
 	}
 }
 
@@ -58,8 +70,8 @@
 .teamGameStatus {
 	font-style: normal;
 	font-weight: 500;
-	font-size: 24px;
-	line-height: 29px;
+	font-size: 24px - $correctSize;
+	line-height: 29px - $correctSize;
 	color: var(--action-color);
 	margin-bottom: 3px;
 }
@@ -67,8 +79,8 @@
 .teamScore {
 	font-style: normal;
 	font-weight: 500;
-	font-size: 18px;
-	line-height: 22px;
+	font-size: 18px - $correctSize;
+	line-height: 22px - $correctSize;
 	color: var(--primary-font-color);
 	margin-bottom: 6px;
 }
@@ -76,7 +88,7 @@
 .teamName {
 	font-style: normal;
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 19px;
+	font-size: 16px - $correctSize;
+	line-height: 19px - $correctSize;
 	color: var(--secondary-font-color);
 }
