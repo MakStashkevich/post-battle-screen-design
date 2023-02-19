@@ -4,7 +4,7 @@ import {BattlePlayerSchema} from "../../../api/methods/battleMethod";
 import {convertNumber} from "../../../lib/math-helper";
 
 export interface TooltipContextSchema {
-    setTooltipPlayer: (player: BattlePlayerSchema) => void;
+    setTooltipPlayer: (player: BattlePlayerSchema, currentPlayer: boolean) => void;
 }
 
 let currentX = 0, currentY = 0;
@@ -24,6 +24,7 @@ interface TooltipProviderProps {
 
 const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps) => {
     const [show, setShow] = useState<boolean>(false);
+    const [showButton, setShowButton] = useState<boolean>(true);
     const [playerInfo, setPlayerInfo] = useState<BattlePlayerSchema>();
     const tooltipRef = useRef<HTMLDivElement>(null);
     const tooltipContentRef = useRef<HTMLDivElement>(null);
@@ -54,10 +55,11 @@ const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps)
             document.removeEventListener('mousemove', onMouseMoveTooltip);
         }
     }, [currentRef]);
-    const setTooltipPlayer = (player: BattlePlayerSchema) => {
+    const setTooltipPlayer = (player: BattlePlayerSchema, currentPlayer: boolean) => {
         clearTooltip();
         timeout = setTimeout(() => {
             setPlayerInfo(player);
+            setShowButton(!currentPlayer);
             setShow(true);
             if (tooltipRef && tooltipRef.current && tooltipRef.current.style) {
                 tooltipRef.current.style.top = (currentY - 130) + 'px';
@@ -68,6 +70,9 @@ const PostBattleTooltipProvider = ({children, currentRef}: TooltipProviderProps)
     let stylesData = [style.tooltipInfo];
     if (show) {
         stylesData.push(style.tooltipInfoShow);
+    }
+    if (!showButton) {
+        stylesData.push(style.tooltipWithoutButton);
     }
     return (
         <TooltipContext.Provider value={{setTooltipPlayer}}>

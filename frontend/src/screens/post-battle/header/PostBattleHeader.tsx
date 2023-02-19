@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./PostBattleHeader.module.scss";
 import PostBattleHeaderTeam from "./PostBattleHeaderTeam";
 import {PostBattleProps} from "../PostBattleScreen";
+import useAnime from "../../../hooks/useAnime";
 
 const PostBattleHeader = ({teams}: PostBattleProps) => {
     let firstTeam, lastTeam, wonTeam;
@@ -10,8 +11,16 @@ const PostBattleHeader = ({teams}: PostBattleProps) => {
         lastTeam = teams[1];
         wonTeam = teams[0].won ? teams[0] : teams[1];
     }
+    const headerId = 'post-battle-header';
+    useAnime({
+        targets: `#${headerId}`,
+        opacity: [0, 1],
+        translateY: [-40, 0],
+        easing: 'easeInOutQuart',
+        duration: 1500,
+    });
     return (
-        <div className={style.head}>
+        <div id={headerId} className={style.head}>
             {firstTeam && lastTeam && wonTeam ? (
                 <React.Fragment>
                     <PostBattleHeaderTeam

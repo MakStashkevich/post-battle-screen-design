@@ -34,7 +34,7 @@ function parsePackageData(name) {
         console.error(e);
         return false
     }
-    // copy current module
+    // copy currentPlayer module
     copyPackageModule(name);
     if (!dependenciesList) {
         return true

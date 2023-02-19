@@ -154,6 +154,10 @@ $tableScrollWidth: 5px;
 
 	tbody tr:nth-child(n) {
 		background-color: var(--scoreboard-line-color);
+
+		&[data-current="true"] {
+			background-color: var(--scoreboard-active-line-color);
+		}
 	}
 
 	tbody tr:hover {
